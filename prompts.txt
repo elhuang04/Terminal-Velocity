@@ -1,3 +1,5 @@
 Can you search on tiktok for bombardino crocadilo
 Can you get all the subtitles to the jet2 holiday videos
- 
+__pycache__
+TikTokAgent.cpython-311.pyc
+tools.cpython-311.pyc
