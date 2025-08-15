@@ -34,6 +34,7 @@ my_agent = Agent(
         "tiktok-mcp:tiktok_search",
         "tiktok-mcp:tiktok_get_post_details",
         "tiktok-mcp:tiktok_get_subtitle",
-        "id_to_url"
+        "id_to_url",
+        "content_moderation"
         ]  
     )

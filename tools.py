@@ -1,22 +1,52 @@
 from ibm_watsonx_orchestrate.agent_builder.tools import tool, ToolPermission
-from ibm_watsonx_orchestrate.agent_builder import flow, Flow
-
+#from ibm_watsonx_orchestrate.agent_builder import flow, Flow
+import re
+from datetime import datetime
 
 @tool(name="id_to_url", description="Get the TikTok video url. Input: tiktok Creater username and Video ID. Returns url")
 def ttmeta_to_url (username:str, id:str):
     return f"https://tiktok.com/@{username}/video/{id}"
 
-@flow(
-    name = "TikTok_use_flow",
-    input_schema=Name,
-    output_schema=str
-)
-def build_hello_message_flow(aflow: Flow = None) -> Flow:
-    """ Based on the first and last name of a person, combine into a single name and create a simple hello world message. """
+harmful_words = {
+    "n****", "f****t", "ch*nk", "sp*c", "white trash", "go back to your country", "dirty immigrant",
+    "terrorist", "subhuman", "suicide", "kill myself", "end my life", "kms",
+    "cutting", "slit wrists", "jump off bridge",
+    "overdose", "self harm",
+    "hang myself", "I want to die", "stab", "shoot", "murder", "kill you", "gun down",
+    "blow up", "bomb", "strangle", "beat to death",
+    "assault", "rape", "torture", "hang", "choke",
+    "arson", "attack", "fight you", "kill yourself", "nobody likes you", "you’re disgusting", "freak"
+}
 
-    combine_names_node = aflow.tool(combine_names)
-    get_hello_message_node = aflow.tool(get_hello_message)
+@tool(name="content_moderation", description = "Flags harmful words and reports them")
+def flag(content:str, url:str):
+    counter = 0
+    flag = []
+    ticket = None
+    word = content.lower
+    for i in range(len(harmful_words)):
+        if(word.equals(i)):
+            if(word not in flag):
+                flag.append(word)
+                counter+=1
+    
+    if(counter>0):
+            ticket = {
+            "ticket_id": f"TICKET-{datetime.now().strftime('%Y%m%d%H%M%S')}",
+            "video_url": url,
+            "detected_words": list(set(flag)),
+            "created_at": datetime.now().isoformat(),
+            "status": "OPEN",
+            "priority": "HIGH"
+            }
+    return{
+        "Is this harmful: ", counter>0,
+        "Bad words: ", flag,
+        "Ticket: " , ticket
+    }
 
-    aflow.edge(START, combine_names_node).edge(combine_names_node, get_hello_message_node).edge(get_hello_message_node, END)
+            
 
-    return aflow
+
+
+#
