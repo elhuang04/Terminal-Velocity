@@ -1,0 +1,2 @@
+#NOTE: virtual environment setup with Python 3.11
+ibm-watsonx-orchestrate == 1.9.0

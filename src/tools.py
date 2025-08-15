@@ -1,12 +1,13 @@
+#------------------------------------------
+#               All Imports
+#------------------------------------------
 from ibm_watsonx_orchestrate.agent_builder.tools import tool, ToolPermission
-#from ibm_watsonx_orchestrate.agent_builder import flow, Flow
 import re
 from datetime import datetime
 
-@tool(name="id_to_url", description="Get the TikTok video url. Input: tiktok Creater username and Video ID. Returns url")
-def ttmeta_to_url (username:str, id:str):
-    return f"https://tiktok.com/@{username}/video/{id}"
-
+#------------------------------------------
+#             Global Variables
+#------------------------------------------
 harmful_words = {
     "n****", "f****t", "ch*nk", "sp*c", "white trash", "go back to your country", "dirty immigrant",
     "terrorist", "subhuman", "suicide", "kill myself", "end my life", "kms",
@@ -17,6 +18,13 @@ harmful_words = {
     "assault", "rape", "torture", "hang", "choke",
     "arson", "attack", "fight you", "kill yourself", "nobody likes you", "you’re disgusting", "freak"
 }
+
+#------------------------------------------
+#                  Tools
+#------------------------------------------
+@tool(name="id_to_url", description="Get the TikTok video url. Input: tiktok Creater username and Video ID. Returns url")
+def ttmeta_to_url (username:str, id:str):
+    return f"https://tiktok.com/@{username}/video/{id}"
 
 @tool(name="content_moderation", description = "Flags harmful words and reports them")
 def flag(content:str, url:str):
@@ -39,14 +47,8 @@ def flag(content:str, url:str):
             "status": "OPEN",
             "priority": "HIGH"
             }
-    return{
+    return {
         "Is this harmful: ", counter>0,
         "Bad words: ", flag,
         "Ticket: " , ticket
     }
-
-            
-
-
-
-#

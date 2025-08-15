@@ -1,7 +1,6 @@
 Can you search on tiktok for bombardino crocadilo
 
 Can you get all the subtitles to the jet2 holiday videos
-<<<<<<< HEAD
 
 Can you find the longest mukbang of someone eating only blue food
 
@@ -18,8 +17,3 @@ Can you get all subtitles from the videos where the grandma tries every Monster 
 Can you find all videos tagged “how to speak dolphin”
 
 Can you get all captions for the man who only does dance tutorials in a shark costume
-=======
-__pycache__
-TikTokAgent.cpython-311.pyc
-tools.cpython-311.pyc
->>>>>>> 612b944c7d48e3796f5eadfce4596cd5c382f4ae

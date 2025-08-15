@@ -2,3 +2,6 @@
 __pycache__
 TikTokAgent.cpython-311.pyc
 tools.cpython-311.pyc
+__pycache__/tools.cpython-311.pyc
+__pycache__/TikTokAgent.cpython-311.pyc
+.DS_Store
