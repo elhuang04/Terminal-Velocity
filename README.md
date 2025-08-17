@@ -10,7 +10,7 @@ MCP Servers Used:
 See more details in [setup.md](./setup.md).
 
 ### Command for tool imports
-NOTE: needs apify-api app ID in `Connections`
+NOTE: needs `apify-api` and `screenshot-api` app ID in `Connections` (both use `API_KEY` as key)
 ```
 orchestrate tools import -k python -f src/tools.py -r requirements.txt --app-id "apify-api" --app-id "screenshot-api"
 ```
