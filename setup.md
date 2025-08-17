@@ -1,6 +1,6 @@
 ## MCP Server Commands
 
-### Instagram MCP
+### Instagram MCP (not used, but imported)
 ```bash
 orchestrate toolkits import \
   --kind=mcp \
@@ -12,7 +12,7 @@ orchestrate toolkits import \
   --tools="*" \
   --app-id "instagram"
 ```
-### Selenium MCP (not used)
+### Selenium MCP (not used, but imported)
 ```bash
 orchestrate toolkits import \
   --kind=mcp \
