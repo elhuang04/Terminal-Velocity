@@ -7,6 +7,7 @@ MCP Servers Used:
 - TikTok: https://glama.ai/mcp/servers/@fmd-labs/viral-app-mcp
 - Selenium: https://github.com/angiejones/mcp-selenium
 
+NOTE: setup assumes local file structure contains local `tiktok-mcp` directory, cloned from `https://github.com/Seym0n/tiktok-mcp.git`
 See more details in [setup.md](./setup.md).
 
 ### Command for tool imports
